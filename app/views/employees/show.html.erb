@@ -1,0 +1,21 @@
+<h2>Employee</h2>
+<table cellpadding="10">
+	<tr>
+		<td> <strong>Employee Name:</strong> </td>
+		<td> <%= @employee.name %> </td>
+	</tr>
+	<tr>
+		<td> <strong>Employee Post:</strong> </td>
+		<td> <%= @employee.post %> </td>
+	</tr>
+	<tr>
+		<td> <strong>Employee Salery:</strong> </td>
+		<td> <%= @employee.salery %> </td>
+	</tr>
+	<tr>
+		<td> <strong>Employee Department:</strong> </td>
+		<td> <%= @department.name %> </td>
+	</tr>
+</table>
+<%= link_to 'Back', employees_path %>&nbsp;&nbsp;
+<%= link_to "Home", controller: :home %>
