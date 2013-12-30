@@ -1,0 +1,28 @@
+<h2>Departments</h2>
+<%= link_to "New Department", new_department_path %>
+<br />
+<br />
+<table cellpadding="10" border="1" style="border-collapse: collapse">
+	<thead>
+		<tr>
+			<th>Department ID</th>
+			<th>Department Name</th>
+			<th>Department Task</th>
+			<th>Department Location</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @departments.each do |department|%>
+		<tr>
+			<td><%= department.id %></td>
+			<td><%= department.name %></td>
+			<td><%= department.task %></td>
+			<td><%= department.location %></td>
+			<td><%= link_to 'Show', department %></td>
+			<td><%= link_to 'Edit', edit_department_path(department) %></td>
+			<td><%= link_to 'Delete', department_path(department), method: :delete, data: {confirm: "Are You Sure?"}%></td>
+		</tr>
+		<% end%>
+	</tbody>
+</table>
+<%= link_to "Home", controller: :home %>
