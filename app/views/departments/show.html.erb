@@ -17,7 +17,7 @@
 <ul>
 <h3>Employees</h3>
 <% @department.employees.each do |employee| %>
-<li><%= employee.name %> &nbsp;&nbsp;&nbsp;<%= link_to 'Show', employee %></li>
+<li><%= employee.name %> <%= link_to 'Show', employee, :style => 'padding-left:2em' %></li>
 <% end %>
 </ul>
 <%end%>

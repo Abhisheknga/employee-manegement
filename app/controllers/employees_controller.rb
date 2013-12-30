@@ -1,7 +1,11 @@
 class EmployeesController < ApplicationController
   def index
     # @employees=Employee.all
-    @employees = Employee.search(params[:search])
+    if params[:search] && params[:search].length>0
+      @employees = Employee.search(params[:search]).paginate(:page => params[:page], :per_page => 2)
+    else
+      @employees=Employee.all
+    end
   end
 
   def create

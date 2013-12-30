@@ -12,15 +12,15 @@
 <table cellpadding="10">
 	<tr>
 		<td> <%= f.label :name %> </td>
-		<td> <%= f.text_field :name %> </td>
+		<td> <%= f.text_field :name, :required => 'required' %> </td>
 	</tr>
 	<tr>
 		<td> <%= f.label :task%> </td>
-		<td> <%= f.text_field :task%> </td>
+		<td> <%= f.text_field :task , :required => 'required'%> </td>
 	</tr>
 	<tr>
 		<td> <%= f.label :location %> </td>
-		<td> <%= f.text_area :location%> </td>
+		<td> <%= f.text_area :location , :required => 'required'%> </td>
 	</tr>
 	<tr>
 		<td> <%= f.submit%> </td>
