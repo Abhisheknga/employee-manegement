@@ -2,6 +2,15 @@
 <%= link_to "New Employee", new_employee_path %>
 <br />
 <br />
+<div>
+	<%= form_tag employees_path, :method => 'get' do %>
+	<p>
+		<%= text_field_tag :search, params[:search] %>
+		<%= submit_tag "Search", :name => nil %>
+	</p>
+	<% end %>
+</div>
+<br />
 <table cellpadding="10" border="1" style="border-collapse: collapse">
 	<thead>
 		<tr>
@@ -28,4 +37,5 @@
 		<% end%>
 	</tbody>
 </table>
+
 <%= link_to "Home", controller: :home %>

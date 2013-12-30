@@ -13,11 +13,13 @@
 		<td> <%= @department.location%> </td>
 	</tr>
 </table>
+<% if @department.employees.length>0 %>
 <ul>
 <h3>Employees</h3>
 <% @department.employees.each do |employee| %>
 <li><%= employee.name %> &nbsp;&nbsp;&nbsp;<%= link_to 'Show', employee %></li>
 <% end %>
 </ul>
+<%end%>
 <%= link_to 'Back', departments_path %>&nbsp;&nbsp;
 <%= link_to "Home", controller: :home %>

@@ -4,4 +4,11 @@ class Employee < ActiveRecord::Base
   validates :post, presence: true
   validates :salery, numericality: true
   validates :department_id, presence: true
+  def self.search(search)
+    if search
+      where 'name LIKE ?', "%#{search}%"
+    else
+      scoped
+    end
+  end
 end
