@@ -14,6 +14,7 @@
 <table cellpadding="10">
 	<tr>
 		<td> <%= f.label :name %> </td>
+<<<<<<< HEAD
 		<td> <%= f.text_field :name %> </td>
 	</tr>
 	<tr>
@@ -23,6 +24,17 @@
 	<tr>
 		<td> <%= f.label :salery %> </td>
 		<td> <%= f.text_field :salery %> </td>
+=======
+		<td> <%= f.text_field :name , :required => 'required'%> </td>
+	</tr>
+	<tr>
+		<td> <%= f.label :post%> </td>
+		<td> <%= f.text_field :post , :required => 'required'%> </td>
+	</tr>
+	<tr>
+		<td> <%= f.label :salery %> </td>
+		<td> <%= f.text_field :salery , :required => 'required'%> </td>
+>>>>>>> b53bec187dedaf125278d3c31d962686c6e347eb
 	</tr>
 	<tr>
 		<td> <%= f.label :department_id %> </td>

@@ -15,6 +15,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+<<<<<<< HEAD
 # Ignore other unneeded files.
 database.yml
 doc/
@@ -24,6 +25,8 @@ doc/
 .DS_Store
 .idea
 .secret
+=======
+>>>>>>> b53bec187dedaf125278d3c31d962686c6e347eb
 =======
 *.gem
 *.rbc

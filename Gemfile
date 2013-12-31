@@ -15,6 +15,11 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
+<<<<<<< HEAD
+=======
+gem 'will_paginate', '~> 3.0'
+
+>>>>>>> b53bec187dedaf125278d3c31d962686c6e347eb
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

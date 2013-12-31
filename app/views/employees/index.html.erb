@@ -3,7 +3,10 @@
 <br />
 <br />
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> b53bec187dedaf125278d3c31d962686c6e347eb
 <div>
 	<%= form_tag employees_path, :method => 'get' do %>
 	<p>
@@ -13,7 +16,10 @@
 	<% end %>
 </div>
 <br />
+<<<<<<< HEAD
 >>>>>>> d23902d781f23deeabd8c5eabec3a8d605f44d8b
+=======
+>>>>>>> b53bec187dedaf125278d3c31d962686c6e347eb
 <table cellpadding="10" border="1" style="border-collapse: collapse">
 	<thead>
 		<tr>
@@ -41,7 +47,15 @@
 	</tbody>
 </table>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> d23902d781f23deeabd8c5eabec3a8d605f44d8b
+=======
+<% if params[:search] %>
+<% if params[:search].length>0 %>
+<%= will_paginate @employees %>
+<% end %>
+<% end %>
+>>>>>>> b53bec187dedaf125278d3c31d962686c6e347eb
 <%= link_to "Home", controller: :home %>

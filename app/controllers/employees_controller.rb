@@ -1,11 +1,20 @@
 class EmployeesController < ApplicationController
   def index
 <<<<<<< HEAD
+<<<<<<< HEAD
     @employees=Employee.all
 =======
     # @employees=Employee.all
     @employees = Employee.search(params[:search])
 >>>>>>> d23902d781f23deeabd8c5eabec3a8d605f44d8b
+=======
+    # @employees=Employee.all
+    if params[:search] && params[:search].length>0
+      @employees = Employee.search(params[:search]).paginate(:page => params[:page], :per_page => 2)
+    else
+      @employees=Employee.all
+    end
+>>>>>>> b53bec187dedaf125278d3c31d962686c6e347eb
   end
 
   def create
