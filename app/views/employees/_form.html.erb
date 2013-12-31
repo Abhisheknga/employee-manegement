@@ -1,7 +1,7 @@
 <%= form_for @employee do |f|%>
 <% if @employee.errors.any? %>
 <div>
-	<h3><%= pluralize(@employee.errors.count,"error") %>prohibited this department from being saved</h3>
+	<h3><%= pluralize(@employee.errors.count,"error") %> prohibited this department from being saved</h3>
 	<ul>
 		<% @employee.errors.full_messages.each do |msg|%>
 		<li>
@@ -14,15 +14,23 @@
 <table cellpadding="10">
 	<tr>
 		<td> <%= f.label :name %> </td>
-		<td> <%= f.text_field :name , :required => 'required'%> </td>
+		<td> <%= f.text_field :name , :required => 'required', placeholder: "Enter Name" %> </td>
 	</tr>
 	<tr>
 		<td> <%= f.label :post%> </td>
-		<td> <%= f.text_field :post , :required => 'required'%> </td>
+		<td> <%= f.text_field :post , :required => 'required', placeholder: "Enter Post"%> </td>
+	</tr>
+	<tr>
+		<td> <%= f.label :email%></td>
+		<td> <%= f.text_field :email , :required => 'required', placeholder: "Enter Email"%></td>
+	</tr>
+	<tr>
+		<td> <%= f.label :email_confirmation%></td>
+		<td> <%= f.text_field :email_confirmation , :required => 'required', placeholder: "Confirm Email"%></td>
 	</tr>
 	<tr>
 		<td> <%= f.label :salery %> </td>
-		<td> <%= f.text_field :salery , :required => 'required'%> </td>
+		<td> <%= f.text_field :salery , :required => 'required', placeholder: "Enter Salery"%> </td>
 	</tr>
 	<tr>
 		<td> <%= f.label :department_id %> </td>
