@@ -1,8 +1,8 @@
 class EmployeesController < ApplicationController
   def index
-    # @employees=Employee.all
     if params[:search] && params[:search].length>0
-      @employees = Employee.search(params[:search]).paginate(:page => params[:page], :per_page => 2)
+      @employees = Employee.search(params[:search]).paginate(:page => params[:page], :per_page => 5)
+      # @employees = Employee.paginate :per_page => 10, :page => params[:page], :joins => :employees, :department => ['employees.name LIKE ? OR department.name LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%"]
     else
       @employees=Employee.all
     end
@@ -23,8 +23,9 @@ class EmployeesController < ApplicationController
   end
 
   def show
-    @employee=Employee.find(params[:id])
-    @department=Department.find(@employee.department_id)
+    @employee = Employee.find(params[:id])
+    # @employee = Employee.find(params[:id],:include => :department)
+    # @department=Department.find(@employee.department_id)
   end
 
   def edit

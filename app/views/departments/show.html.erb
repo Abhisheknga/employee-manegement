@@ -1,25 +1,32 @@
 <h2>Department</h2>
 <table cellpadding="10">
 	<tr>
-		<td> <strong>Department Name:</strong> </td>
+		<td><strong>Department Name:</strong></td>
 		<td> <%= @department.name %> </td>
 	</tr>
 	<tr>
-		<td> <strong>Department Task:</strong> </td>
+		<td><strong>Department Task:</strong></td>
 		<td> <%= @department.task%> </td>
 	</tr>
 	<tr>
-		<td> <strong>Department Location:</strong> </td>
+		<td><strong>Department Location:</strong></td>
 		<td> <%= @department.location%> </td>
 	</tr>
 </table>
 <% if @department.employees.length>0 %>
 <ul>
-<h3>Employees</h3>
-<% @department.employees.each do |employee| %>
-<li><%= employee.name %> <%= link_to 'Show', employee, :style => 'padding-left:2em' %></li>
-<% end %>
+	<h3>Employees</h3>
+	<table>
+		<% @department.employees.each do |employee| %>
+		<tr>
+			<td><%= employee.name %></td>
+			<td><%= link_to 'Show', employee, :style => 'padding-left:2em' %></td>
+		</tr>
+		<% end %>
+	</table>
 </ul>
 <%end%>
-<%= link_to 'Back', departments_path %>&nbsp;&nbsp;
+<%= link_to 'Edit', edit_department_path(@department) %>&nbsp;&nbsp;
+<%= link_to 'Delete', department_path(@department), method: :delete, data: {confirm: "Are You Sure?"}%>&nbsp;&nbsp;
+<%= link_to 'Departments', departments_path %>&nbsp;&nbsp;
 <%= link_to "Home", controller: :home %>

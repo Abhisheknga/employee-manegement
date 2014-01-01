@@ -5,11 +5,15 @@
 <div>
 	<%= form_tag employees_path, :method => 'get' do %>
 	<p>
-		<%= text_field_tag :search, params[:search], autofocus: true, placeholder: "Search for Name ar Post", size: 30, list: "namelist",autocomplete: "off" %>
+		<%= text_field_tag :search, params[:search], autofocus: true, placeholder: "Search for Name of Employee or Department", size: 45, list: "namelist",autocomplete: "off" %>
 		<datalist id="namelist">
-         <% @employees.each do |emp| %>
+         <% Employee.all.each do |emp| %>
          <option value="<%= emp.name %>">
          <% end %>
+         <% Department.all.each do |dept| %>
+         <option value="<%= dept.name %>">
+         <% end %>
+         
          </datalist>
 		<%= submit_tag "Search", :name => nil %>
 	</p>
@@ -20,24 +24,23 @@
 <table cellpadding="10" border="1" style="border-collapse: collapse">
 	<thead>
 		<tr>
-			<th>Employee ID</th>
-			<th>Employee Name</th>
-			<th>Employee Post</th>
-			<th>Employee Email</th>
-			<th>Employee Salery</th>
-			<th>Employee Department</th>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Post</th>
+			<th>Email</th>
+			<th>Salery</th>
+			<th>Department</th>
 		</tr>
 	</thead>
 	<tbody style="text-align:center">
 		<% @employees.each do |employee|%>
-		<% department=Department.find(employee.department_id) %>
 		<tr>
 			<td><%= employee.id %></td>
 			<td><%= employee.name %></td>
 			<td><%= employee.post %></td>
 			<td><%= employee.email %></td>
 			<td><%= employee.salery %></td>
-			<td><%= department.name %></td>
+			<td><%= employee.department.name %></td>
 			<td><%= link_to 'Show', employee %></td>
 			<td><%= link_to 'Edit', edit_employee_path(employee) %></td>
 			<td><%= link_to 'Delete', employee_path(employee), method: :delete, data: {confirm: "Are You Sure?"}%></td>

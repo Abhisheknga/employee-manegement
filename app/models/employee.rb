@@ -10,8 +10,8 @@ class Employee < ActiveRecord::Base
   validates :department_id, presence: true
   def self.search(search)
     if search
-      where 'name LIKE ? OR post LIKE ?', "%#{search}%","%#{search}"
-      # Employee.joins(:departments).where('post LIKE ? OR departments.name LIKE ?', "%#{search}%","%#{search}%")
+      # where 'name LIKE ? OR post LIKE ?', "%#{search}%","%#{search}"
+      Employee.joins(:department).where('employees.name LIKE ? OR departments.name LIKE ?', "%#{search}%","%#{search}%")
     else
       scoped
     end

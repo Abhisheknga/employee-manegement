@@ -18,8 +18,10 @@
 	</tr>
 	<tr>
 		<td> <strong>Employee Department:</strong> </td>
-		<td> <%= @department.name %> </td>
+		<td> <%= @employee.department.name %> </td>
 	</tr>
 </table>
-<%= link_to 'Back', employees_path %>&nbsp;&nbsp;
+<%= link_to 'Edit', edit_employee_path(@employee) %>&nbsp;&nbsp;
+<%= link_to 'Delete', employee_path(@employee), method: :delete, data: {confirm: "Are You Sure?"}%>&nbsp;&nbsp;
+<%= link_to 'Employees', employees_path %>&nbsp;&nbsp;
 <%= link_to "Home", controller: :home %>
