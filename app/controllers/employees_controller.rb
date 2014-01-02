@@ -6,7 +6,7 @@ class EmployeesController < ApplicationController
       @employees = Employee.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
       # @employees = Employee.paginate :per_page => 10, :page => params[:page], :joins => :employees, :department => ['employees.name LIKE ? OR department.name LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%"]
     else
-      @employees=Employee.all
+      @employees=Employee.all.paginate(:page => params[:page], :per_page => 10)
     end
     # respond_to do |format|
     # format.html
@@ -65,7 +65,7 @@ class EmployeesController < ApplicationController
       @employees = Employee.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
     else
       puts 'else'
-      @employees=Employee.all
+      @employees=Employee.all.paginate(:page => params[:page], :per_page => 10)
     end
     respond_to do |format|
     format.html

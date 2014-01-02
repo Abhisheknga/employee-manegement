@@ -35,10 +35,7 @@
 <div id="emplist">
 	<%= render 'employeelist' %>
 </div>
-
-<% if params[:search] %>
-<% if params[:search].length>0 %>
-<%= will_paginate @employees %>
-<% end %>
-<% end %>
+<br />
+<%= will_paginate @employees, :id => 'paginate' %>
+<br />
 <%= link_to "Home", controller: :home %>

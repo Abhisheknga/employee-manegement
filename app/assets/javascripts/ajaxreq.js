@@ -12,8 +12,10 @@ $(document).ready(function() {
 		// console.log(code);
 		var searchString;
 		searchString = document.getElementById("ajaxsearch").value;
-		if (searchString.length>0)
+		if (searchString.length>0) {
 				flag=true;
+				$('#paginate').hide();
+		}
 		if (code==37||code==38||code==39||code==40) {
 			flag=false;
 		}
@@ -31,8 +33,10 @@ $(document).ready(function() {
 					console.log(data);
 				}
 			});
-			if (searchString.length==0)
+			if (searchString.length==0){
 				flag=false;
+				$('#paginate').show();
+			}
 		}
 
 	};
