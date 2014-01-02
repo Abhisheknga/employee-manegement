@@ -1,31 +1,19 @@
 class Employee < ActiveRecord::Base
   belongs_to :department
-<<<<<<< HEAD
-  validates :name, presence: true
-  validates :post, presence: true
-  validates :salery, numericality: true
-  validates :department_id, presence: true
-<<<<<<< HEAD
-end
-=======
-  def self.search(search)
-    if search
-      where 'name LIKE ?', "%#{search}%"
-=======
+  validates_each :name do |record, attr, value|
+    record.errors.add(attr, 'must start with upper case') if value =~ /\A[a-z]/
+  end
+  validates :post, inclusion: { in: %w(SE JSE SSE DEV MANAGER android iOS phonegap se jse sse dev manager Manager),message: "%{value} is not valid, SE JSE SSE DEV MANAGER android iOS phonegap are available post" }
+  validates :email, uniqueness: true, confirmation: true, :presence => true, :email => true
+  validates :email_confirmation, presence: true
   validates :salery, numericality: true
   validates :department_id, presence: true
   def self.search(search)
     if search
-      where 'name LIKE ? OR post LIKE ?', "%#{search}%","%#{search}"
-      # Employee.joins(:departments).where('post LIKE ? OR departments.name LIKE ?', "%#{search}%","%#{search}%")
->>>>>>> b53bec187dedaf125278d3c31d962686c6e347eb
+      # where 'name LIKE ? OR post LIKE ?', "%#{search}%","%#{search}"
+      Employee.joins(:department).where('employees.name LIKE ? OR departments.name LIKE ?', "%#{search}%","%#{search}%")
     else
       scoped
     end
   end
-<<<<<<< HEAD
 end
->>>>>>> d23902d781f23deeabd8c5eabec3a8d605f44d8b
-=======
-end
->>>>>>> b53bec187dedaf125278d3c31d962686c6e347eb

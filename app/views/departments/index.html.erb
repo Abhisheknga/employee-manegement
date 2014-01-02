@@ -1,17 +1,17 @@
-<h2>Departments</h2>
+<h2>Departments Table</h2>
 <%= link_to "New Department", new_department_path %>
 <br />
 <br />
 <table cellpadding="10" border="1" style="border-collapse: collapse">
 	<thead>
 		<tr>
-			<th>Department ID</th>
-			<th>Department Name</th>
-			<th>Department Task</th>
-			<th>Department Location</th>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Task</th>
+			<th>Location</th>
 		</tr>
 	</thead>
-	<tbody>
+	<tbody style="text-align:center">
 		<% @departments.each do |department|%>
 		<tr>
 			<td><%= department.id %></td>

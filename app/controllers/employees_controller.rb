@@ -1,20 +1,21 @@
 class EmployeesController < ApplicationController
   def index
-<<<<<<< HEAD
-<<<<<<< HEAD
-    @employees=Employee.all
-=======
-    # @employees=Employee.all
-    @employees = Employee.search(params[:search])
->>>>>>> d23902d781f23deeabd8c5eabec3a8d605f44d8b
-=======
-    # @employees=Employee.all
+    puts 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii'
+    puts params[:search]
     if params[:search] && params[:search].length>0
-      @employees = Employee.search(params[:search]).paginate(:page => params[:page], :per_page => 2)
+      @employees = Employee.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
+      # @employees = Employee.paginate :per_page => 10, :page => params[:page], :joins => :employees, :department => ['employees.name LIKE ? OR department.name LIKE ?', "%#{params[:search]}%", "%#{params[:search]}%"]
     else
       @employees=Employee.all
     end
->>>>>>> b53bec187dedaf125278d3c31d962686c6e347eb
+    # respond_to do |format|
+    # format.html
+      # if params[:callback]
+        # format.js { render :json => {:employees => @employees.to_json}, :callback => params[:callback] }
+      # else
+        # format.json { render json: {:employees => @employees}}
+       # end
+    # end
   end
 
   def create
@@ -32,8 +33,9 @@ class EmployeesController < ApplicationController
   end
 
   def show
-    @employee=Employee.find(params[:id])
-    @department=Department.find(@employee.department_id)
+    @employee = Employee.find(params[:id])
+    # @employee = Employee.find(params[:id],:include => :department)
+    # @department=Department.find(@employee.department_id)
   end
 
   def edit
@@ -54,10 +56,30 @@ class EmployeesController < ApplicationController
     @employee.destroy
     redirect_to employees_path
   end
+  
+  def _employeelist
+    puts '1111111111111111111111111111111111111111111111111111'
+    puts params[:search]
+    if params[:search] && params[:search].length>0
+      puts 'if'
+      @employees = Employee.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
+    else
+      puts 'else'
+      @employees=Employee.all
+    end
+    respond_to do |format|
+    format.html
+      if params[:callback]
+        format.js { render :json => {:employees => @employees.to_json}, :callback => params[:callback] }
+      else
+        format.json { render json: {:employees => @employees}}
+       end
+    end
+  end
 
   private
 
   def permission_access
-    params.require(:employee).permit(:name,:post,:salery,:department_id)
+    params.require(:employee).permit(:name,:post,:email,:email_confirmation,:salery,:department_id)
   end
 end

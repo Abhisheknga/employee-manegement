@@ -1,0 +1,11 @@
+<tr>
+	<td><%= employee.id %></td>
+	<td><%= employee.name %></td>
+	<td><%= employee.post %></td>
+	<td><%= employee.email %></td>
+	<td><%= employee.salery %></td>
+	<td><%= employee.department.name %></td>
+	<td><%= link_to 'Show', employee %></td>
+	<td><%= link_to 'Edit', edit_employee_path(employee) %></td>
+	<td><%= link_to 'Delete', employee_path(employee), method: :delete, data: {confirm: "Are You Sure?"}%></td>
+</tr>
