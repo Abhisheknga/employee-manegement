@@ -4,7 +4,9 @@
 	<h3><%= pluralize(@department.errors.count,"error") %>prohibited this department from being saved</h3>
 	<ul>
 		<% @department.errors.full_messages.each do |msg|%>
-		<li><%= msg %></li>
+		<li>
+			<%= msg %>
+		</li>
 		<% end %>
 	</ul>
 </div>
@@ -12,11 +14,19 @@
 <table cellpadding="10">
 	<tr>
 		<td> <%= f.label :name %> </td>
-		<td> <%= f.text_field :name, :required => 'required' %> </td>
+		<td> <%= f.text_field :name, :required => 'required', :style =>'text-transform:capitalize' %> </td>
 	</tr>
 	<tr>
 		<td> <%= f.label :task%> </td>
-		<td> <%= f.text_field :task , :required => 'required'%> </td>
+		<td> <%= f.text_field :task , :required => 'required', :style =>'text-transform:capitalize' %> </td>
+	</tr>
+	<tr>
+		<td><%= f.label :country_code %> </td>
+		<td><%= f.country_select :country_code, priority: %w(US CA), prompt: 'Please select a country' %> </td>
+	</tr>
+	<tr>
+		<td><%= f.label :state_code %> </td>
+		<td><%= render partial: 'subregion_select', locals: {parent_region: f.object.country_code} %> </td>
 	</tr>
 	<tr>
 		<td> <%= f.label :location %> </td>
@@ -27,3 +37,16 @@
 	</tr>
 </table>
 <%end%>
+
+<script type="text/javascript">
+	$('select#department_country_code').change(function(event){
+		select_wrapper = $('#order_state_code_wrapper')
+	
+	    $('select', select_wrapper).attr('disabled', true)
+	
+	    country_code = $(this).val()
+	
+	    url = "/subregion_options?parent_region="+country_code
+	    select_wrapper.load(url)
+	})	   
+</script>

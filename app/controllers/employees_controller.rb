@@ -1,6 +1,5 @@
 class EmployeesController < ApplicationController
   def index
-    puts 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii'
     puts params[:search]
     if params[:search] && params[:search].length>0
       @employees = Employee.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
@@ -8,14 +7,6 @@ class EmployeesController < ApplicationController
     else
       @employees=Employee.all.paginate(:page => params[:page], :per_page => 10)
     end
-    # respond_to do |format|
-    # format.html
-      # if params[:callback]
-        # format.js { render :json => {:employees => @employees.to_json}, :callback => params[:callback] }
-      # else
-        # format.json { render json: {:employees => @employees}}
-       # end
-    # end
   end
 
   def create
@@ -67,14 +58,28 @@ class EmployeesController < ApplicationController
       puts 'else'
       @employees=Employee.all.paginate(:page => params[:page], :per_page => 10)
     end
-    respond_to do |format|
-    format.html
-      if params[:callback]
-        format.js { render :json => {:employees => @employees.to_json}, :callback => params[:callback] }
-      else
-        format.json { render json: {:employees => @employees}}
-       end
+    render partial: 'employeelist'
+    # respond_to do |format|
+    # format.html
+      # if params[:callback]
+        # format.js { render :json => {:employees => @employees.to_json}, :callback => params[:callback] }
+      # else
+        # format.json { render json: {:employees => @employees}}
+       # end
+    # end
+  end
+  
+  def employee_search
+    puts 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii'
+    puts params[:search]
+    if params[:search] && params[:search].length>0
+      puts 'if'
+      @employees = Employee.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
+    else
+      puts 'else'
+      @employees=Employee.all.paginate(:page => params[:page], :per_page => 10)
     end
+    render partial: 'employeelist'
   end
 
   private

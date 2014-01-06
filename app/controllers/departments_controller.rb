@@ -39,10 +39,15 @@ class DepartmentsController < ApplicationController
     @department.destroy
     redirect_to departments_path
   end
+  
+  def subregion_options
+    puts 'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii'
+    render partial: 'subregion_select'
+  end
 
   private
 
   def permission_access
-    params.require(:department).permit(:name,:task,:location)
+    params.require(:department).permit(:name,:task,:location,:country_code,:state_code)
   end
 end

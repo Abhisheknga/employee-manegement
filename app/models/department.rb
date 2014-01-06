@@ -2,7 +2,7 @@ class Department < ActiveRecord::Base
   has_many :employees, dependent: :destroy
   validates :name, length: {minimum: 5}
 
-  before_validation :normalize_name, on: :create
+  before_validation :normalize_name, on: [:create,:update]
   before_create :capitalize_task
   # after_validation :set_location, on: [ :create, :update ]
 

@@ -3,6 +3,7 @@
 	$(document).ready(function() {
 		$("#search").bind('keyup', submitform);
 		$("#ajaxsearch").bind('keyup', ajaxSearchRequest);
+		$("#partialsearch").bind('keyup', partialSearch);
 	});
 
 	function onfocustext() {
@@ -29,11 +30,14 @@
 	<p >
 		<%= text_field_tag :ajaxsearch, params[:ajaxsearch], :onfocus => "this.value = this.value;", list: "namelist", size: 50,autocomplete: "off",  placeholder: "Ajax Search for Name of Employee or Department" %>
 	</p>
+	<p >
+		<%= text_field_tag :partialsearch, params[:partialsearch], :onfocus => "this.value = this.value;", list: "namelist", size: 50,autocomplete: "off",  placeholder: "Partial Search for Name of Employee or Department" %>
+	</p>
 </div>
 
 <br />
 <div id="emplist">
-	<%= render 'employeelist' %>
+	<%= render partial: 'employeelist' %>
 </div>
 <br />
 <%= will_paginate @employees, :id => 'paginate' %>

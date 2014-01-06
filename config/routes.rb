@@ -5,7 +5,11 @@ EmployeeManegement::Application.routes.draw do
   resources :departments
   resources :employees
   
+  get '/subregion_options' => 'departments#subregion_options'
+  # get '/employee_search' => 'employees#employee_search'
+  match '/employee_search', :action => 'employee_search',:controller => 'employees', via:[:get,:post]
   match '/employeelist', :action => '_employeelist', :controller => 'employees', via: [:get,:post]
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
