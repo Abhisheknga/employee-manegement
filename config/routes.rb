@@ -10,6 +10,12 @@ EmployeeManegement::Application.routes.draw do
   match '/employee_search', :action => 'employee_search',:controller => 'employees', via:[:get,:post]
   match '/employeelist', :action => '_employeelist', :controller => 'employees', via: [:get,:post]
   
+  resources :records
+  
+  match '/SortByDueDate', :action => 'sortByDueDate', :controller => 'records', via: [:get,:post]
+  match '/SortByPriority', :action => 'sortByPriority', :controller => 'records', via: [:get,:post]
+  match '/sortById', :action => 'sortById', :controller => 'records', via: [:get,:post]
+  match '/prioritysort', :action => 'priority_sort_ajax', :controller => 'records', via: [:get,:post]
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,59 @@
+<style>
+	input[type="date"] {
+		width: 120px;
+	}
+</style>
+<%=form_for @record do |f|%>
+<% if @record.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@record.errors.count, "error") %> prohibited
+	this post from being saved:</h2>
+	<ul>
+		<% @record.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<table border="0" cellpadding="10" style="border-collapse: collapse">
+<tr>
+	<td>
+	<%= f.label :title%>
+	</td>
+	<td>
+	<%= f.text_field :title%>
+	</td>
+</tr>
+<tr>
+	<td>
+	<%= f.label :due_date%>
+	</td>
+	<td>
+	<%= f.date_field :due_date %>
+	</td>
+</tr>
+<tr>
+	<td>
+	<%= f.label :priority%>
+	</td>
+	<td>
+	<%= f.text_field :priority%>
+	</td>
+</tr>
+<tr>
+	<td>
+	<%= f.label :description%>
+	</td>
+	<td>
+	<%= f.text_area :description%>
+	</td>
+</tr>
+<tr>
+	<td rowspan="2">
+		<%= f.submit %>
+	</td>
+</tr>
+</table>
+<%end%>

@@ -1,0 +1,23 @@
+<h2>Show Record</h2>
+<table border="0" cellpadding="10" style="border-collapse: collapse">
+	<tr>
+		<td><strong>Title:</strong></td>
+		<td> <%= @record.title %> </td>
+	</tr>
+	<tr>
+		<td><strong>Due Date:</strong></td>
+		<td> <%= @record.due_date %> </td>
+	</tr>
+	<tr>
+		<td><strong>Priority:</strong></td>
+		<td> <%= @record.priority %> </td>
+	</tr>
+	<tr>
+		<td><strong>Description:</strong></td>
+		<td> <%= @record.description %> </td>
+	</tr>
+</table>
+<%= link_to "Edit", edit_record_path(@record)%>&nbsp;&nbsp;
+<%= link_to "Delete", record_path(@record), method: :delete, data: {confirm: "Are yoy sure?"}%>&nbsp;&nbsp;
+<%= link_to 'Records', records_path %>&nbsp;&nbsp;
+<%= link_to "Home", controller: :home %>

@@ -1,0 +1,41 @@
+<h2>Listing todo</h2>
+<%= link_to "New Record", new_record_path%>
+<table border="1" cellpadding="10" style="border-collapse: collapse">
+	<thead>
+		<tr>
+			<!-- <th><%= link_to 'ID', :action => "sortById" %></th> -->
+			<th><%= link_to 'ID', records_path %></th>
+			<th >Title</th>
+			<th><%= link_to "Due Date", :action => "sortByDueDate"%> </th>
+			<!-- <th><a id="priority" class="<%=is_ASC('ASC')%>" href="/SortByPriority?sort=ASC">Priority</a></th> -->
+			<th <%= current_root_class %>><%= link_to "Priority", :action => "sortByPriority",:sort => @order %> </th>
+			<th >Description</th>
+		</tr>
+	</thead>
+	<tbody id="sortedTable">
+		<% @records.each do |record| %>
+		<tr>
+			<td><%= record.id%></td>
+			<td><%= record.title %></td>
+			<td><%= record.due_date %></td>
+			<td><%= record.priority %></td>
+			<td><%= record.description %></td>
+			<td><%= link_to "Show", record%></td>
+			<td><%= link_to "Edit", edit_record_path(record)%></td>
+			<td><%= link_to "Delete", record_path(record), method: :delete, data: {confirm: "Are yoy sure?"}%></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<!-- <li class="<%=is_active('index')%>"> -->
+<br />
+<button id="priority">
+	Priority With ajax
+</button>
+<script>
+$(document).ready(function() {
+	$("#priority").bind('click',refreshData);
+});
+</script>
+<br></br>
+<%= link_to "Home", controller: :home %>
